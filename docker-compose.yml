@@ -1,0 +1,33 @@
+version: "3.2"
+
+services:
+  storage:
+    restart: "always"
+    container_name: onemorearc-website
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+      - mongo
+    hostname: "0.0.0.0"
+    environment:
+      - PARSE_APP_ID=oulzlZnBPSZQOsXkMq8r
+      - PARSE_JAVASCRIPT_KEY=csrCOWD0yaAatvfDQ2m4
+      - PARSE_REST_API_KEY=b9pwQo2RysfiCbdGLTIz
+      - PARSE_SERVER_URL=https://onemorearc.com/api
+      - MONGODB_URL=mongodb://onemorearc-admin:onemorearc-password@mongo:27017/admin?retryWrites=true&w=majority
+    ports:
+      - "0.0.0.0:1337:1337"
+
+
+  mongo:
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=onemorearc-admin
+      - MONGO_INITDB_ROOT_PASSWORD=onemorearc-password
+    ports:
+      - 27017:27017
+    volumes:
+      - ../mongo/data:/data
