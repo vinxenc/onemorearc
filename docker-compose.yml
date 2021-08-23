@@ -14,11 +14,10 @@ services:
       - PARSE_APP_ID=oulzlZnBPSZQOsXkMq8r
       - PARSE_JAVASCRIPT_KEY=csrCOWD0yaAatvfDQ2m4
       - PARSE_REST_API_KEY=b9pwQo2RysfiCbdGLTIz
-      - PARSE_SERVER_URL=https://onemorearc.com/api
-      - MONGODB_URL=mongodb://onemorearc-admin:onemorearc-password@mongo:27017/admin?retryWrites=true&w=majority
+      - PARSE_SERVER_URL=https://localhost:1337/api
+      - DATABASE_URI=mongodb://onemorearc-admin:onemorearc-password@mongo:27017/admin?retryWrites=true&w=majority
     ports:
       - "0.0.0.0:1337:1337"
-
 
   mongo:
     container_name: mongodb

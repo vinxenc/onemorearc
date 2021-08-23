@@ -1,3 +1,9 @@
+<%
+const monthNames = ["January", "February", "March", "April", "May", "June",
+"July", "August", "September", "October", "November", "December"
+];
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,57 +56,41 @@
                   <div class="wt-post-media">
                       <!--Fade slider-->
                       <div class="owl-carousel owl-fade-slider-one owl-btn-vertical-center owl-dots-bottom-right">
-                      
-                          <div class="item">
-                              <div class="aon-thum-bx">
-                                  <img src="/images/blog/default/thum1.jpg" alt="">
-                              </div>
-                          </div>
-                          
-                          <div class="item">
-                              <div class="aon-thum-bx">
-                                  <img src="/images/blog/default/thum2.jpg" alt="">
-                              </div>
-                          </div>
-                          
-                          <div class="item">
-                              <div class="aon-thum-bx">
-                                  <img src="/images/blog/default/thum3.jpg" alt="">
-                              </div>
-                          </div>                                    
+                        <% for (let i = 1; i <= 10; i++) { %>
+                            <% if (post.get(`image${i}`)) { %>
+                                <div class="item">
+                                    <div class="aon-thum-bx">
+                                        <img src="<%= post.get(`image${i}`).url(); %>" alt="">
+                                    </div>
+                                </div>
+                            <% }; %> 
+                        <% }; %> 
                       
                       </div>
                       <!--fade slider END-->
                   </div>
                   <div class="wt-post-info p-t30 bg-white">
                       <div class="wt-post-title ">
-                          <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-20 letter-spacing-2 font-weight-600">Blogpost With Image Slider there are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</a></h2>
+                          <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-20 letter-spacing-2 font-weight-600"><%= post.get('title') %></a></h2>
                       </div>
                       <div class="wt-post-meta">
                           <ul>
-                              <li class="post-date"> <strong>20 Dec</strong> <span> 2017</span> </li>
+                              <li class="post-date"> <strong><%= post.get('createdAt').getDate() + " " + monthNames[post.get('createdAt').getMonth()];  %></strong> <span> <%= post.get('createdAt').getFullYear(); %></span> </li>
                               <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                              <li class="post-comment"><a href="javascript:void(0);">5 Comments</a> </li>
+                              <!-- <li class="post-comment"><a href="javascript:void(0);">5 Comments</a> </li> -->
                           </ul>
                       </div>
                       <div class="wt-post-text">
-                          <p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis quisquam laboriosam esse beatae hic perferendis velit deserunt soluta iste repellendus officia in neque veniam debitis Consectetur, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium vitae, consequuntur minima tempora cupiditate ratione est, ad molestias deserunt in ipsam ea quasi cum culpa adipisci dolores voluptatum fuga at! assumenda provident lorem ipsum dolor sit amet, consectetur.</p> 
-<p>Donec posuere bibendum metus. Quisque gravida luctus volutpat. Mauris interdum, lectus in dapibus molestie, quam felis sollicitudin mauris, sit amet tempus velit lectus nec lorem. Nullam vel mollis neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel enim dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed tincidunt accumsan massa id viverra. Sed sagittis, nisl sit amet imperdiet convallis, nunc tortor consequat tellus, vel molestie neque nulla non ligula. Proin tincidunt tellus ac porta volutpat. Cras mattis congue lacus id bibendum. Mauris ut sodales libero. Maecenas feugiat sit amet enim in accumsan.</p>
+                            <p><%= post.get('content') %> </p>
                       </div>
                       <div class="row">
                           <div class="col-md-8 col-sm-6">
                               <div class="widget bg-white  widget_tag_cloud">
                               <h4 class="tagcloud text-uppercase">Tags</h4>
                               <div class="tagcloud">
-                                  <a href="javascript:void(0);">Business</a>
-                                  <a href="javascript:void(0);">Construction</a>
-                                  <a href="javascript:void(0);">Design</a>
-                                  <a href="javascript:void(0);">Technology</a>
-                                  <a href="javascript:void(0);">Architecture</a>
-                                  <a href="javascript:void(0);">Marketing</a>
-                                  <a href="javascript:void(0);">Design</a>
-                                  <a href="javascript:void(0);">Technology</a>
-                                  <a href="javascript:void(0);">Structure</a>                                
+                                <% post.get('tags').forEach(function(tag){ %>
+                                    <a href="javascript:void(0);"><%= tag; %></a>
+                                <% }); %>                            
                                   
                               </div>
                           </div>
@@ -141,121 +131,30 @@
                   <!-- CAROUSEL -->
                   <div class="section-content">
                           <div class="owl-carousel blog-related-slider  owl-btn-top-right">
-                              <!-- COLUMNS 1 --> 
-                              <div class="item">
-                                   <div class="blog-post blog-grid date-style-1">
-                                      <div class="wt-post-media wt-img-effect zoom-slow">
-                                          <a href="javascript:void(0);"><img src="/images/gallery/pic1.jpg" alt=""></a>
-                                      </div>
-                                      <div class="wt-post-info p-a20 bg-gray text-black">
-                                          <div class="wt-post-title ">
-                                              <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-16 letter-spacing-2 font-weight-600">Triangle Concrete House on lake</a></h2>
-                                          </div>
-                                          <div class="wt-post-meta ">
-                                              <ul>
-                                                  <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
-                                                  <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                                              </ul>
-                                          </div>
-                                          <div class="wt-post-text">
-                                              <p>Adipisicing elit. Accusantium vitae, consequuntur minima tempora cupiditate ratione est, ad molestias deserunt in ipsam ea quasi cum.</p> 
-                                          </div>
-                                          <a href="Javascript:;" class="site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
-                                      </div>
-                                  </div>
-                              </div>
-                              <!-- COLUMNS 2 --> 
-                              <div class="item">
-                                   <div class="blog-post blog-grid date-style-1">
-                                      <div class="wt-post-media wt-img-effect zoom-slow">
-                                          <a href="javascript:void(0);"><img src="/images/gallery/pic2.jpg" alt=""></a>
-                                      </div>
-                                      <div class="wt-post-info p-a20 bg-gray text-black">
-                                          <div class="wt-post-title ">
-                                              <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-16 letter-spacing-2 font-weight-600">Triangle Concrete House on lake</a></h2>
-                                          </div>
-                                          <div class="wt-post-meta ">
-                                              <ul>
-                                                  <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
-                                                  <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                                              </ul>
-                                          </div>
-                                          <div class="wt-post-text">
-                                              <p>Adipisicing elit. Accusantium vitae, consequuntur minima tempora cupiditate ratione est, ad molestias deserunt in ipsam ea quasi cum.</p>  
-                                          </div>
-                                          <a href="Javascript:;" class="site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
-                                      </div>
-                                  </div>
-                              </div>
-                              <!-- COLUMNS 3 --> 
-                              <div class="item">
-                                   <div class="blog-post blog-grid date-style-1">
-                                      <div class="wt-post-media wt-img-effect zoom-slow">
-                                          <a href="javascript:void(0);"><img src="/images/gallery/pic3.jpg" alt=""></a>
-                                      </div>
-                                      <div class="wt-post-info p-a20 bg-gray text-black">
-                                          <div class="wt-post-title ">
-                                              <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-16 letter-spacing-2 font-weight-600">Triangle Concrete House on lake</a></h2>
-                                          </div>
-                                          <div class="wt-post-meta ">
-                                              <ul>
-                                                  <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
-                                                  <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                                              </ul>
-                                          </div>
-                                          <div class="wt-post-text">
-                                              <p>Adipisicing elit. Accusantium vitae, consequuntur minima tempora cupiditate ratione est, ad molestias deserunt in ipsam ea quasi cum.</p>  
-                                          </div>
-                                          <a href="Javascript:;" class="site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
-                                      </div>
-                                  </div>
-                              </div>
-                              <!-- COLUMNS 4 --> 
-                              <div class="item">
-                                   <div class="blog-post blog-grid date-style-1">
-                                      <div class="wt-post-media wt-img-effect zoom-slow">
-                                          <a href="javascript:void(0);"><img src="/images/gallery/pic4.jpg" alt=""></a>
-                                      </div>
-                                      <div class="wt-post-info p-a20 bg-gray text-black">
-                                          <div class="wt-post-title ">
-                                              <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-16 letter-spacing-2 font-weight-600">Triangle Concrete House on lake</a></h2>
-                                          </div>
-                                          <div class="wt-post-meta ">
-                                              <ul>
-                                                  <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
-                                                  <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                                              </ul>
-                                          </div>
-                                          <div class="wt-post-text">
-                                             <p>Adipisicing elit. Accusantium vitae, consequuntur minima tempora cupiditate ratione est, ad molestias deserunt in ipsam ea quasi cum.</p>  
-                                          </div>
-                                          <a href="Javascript:;" class="site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
-                                      </div>
-                                  </div>
-                              </div>
-                              <!-- COLUMNS 5 --> 
-                              <div class="item">
-                                   <div class="blog-post blog-grid date-style-1">
-                                      <div class="wt-post-media wt-img-effect zoom-slow">
-                                          <a href="javascript:void(0);"><img src="/images/gallery/pic5.jpg" alt=""></a>
-                                      </div>
-                                      <div class="wt-post-info p-a20 bg-gray text-black">
-                                          <div class="wt-post-title ">
-                                              <h2 class="post-title"><a href="javascript:void(0);" class="text-black font-16 letter-spacing-2 font-weight-600">Triangle Concrete House on lake</a></h2>
-                                          </div>
-                                          <div class="wt-post-meta ">
-                                              <ul>
-                                                  <li class="post-date"><strong>20 Feb</strong> <span> 2018</span> </li>
-                                                  <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
-                                              </ul>
-                                          </div>
-                                          <div class="wt-post-text">
-                                              <p>Adipisicing elit. Accusantium vitae, consequuntur minima tempora cupiditate ratione est, ad molestias deserunt in ipsam ea quasi cum.</p>  
-                                          </div>
-                                          <a href="Javascript:;" class="site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
-                                      </div>
-                                  </div>
-                              </div>
+                            <% relatedPosts.forEach(function(relatedPost){ %>
+                                <div class="item">
+                                    <div class="blog-post blog-grid date-style-1">
+                                       <div class="wt-post-media wt-img-effect zoom-slow">
+                                           <a href="javascript:void(0);"><img src="<%= relatedPost.get('image1').url() %>" alt=""></a>
+                                       </div>
+                                       <div class="wt-post-info p-a20 bg-gray text-black">
+                                           <div class="wt-post-title ">
+                                               <h2 class="post-title"><a href="<%= '/projects/' + relatedPost.get('alias') %>" class="text-black font-16 letter-spacing-2 font-weight-600"><%= relatedPost.get('name') %></a></h2>
+                                           </div>
+                                           <div class="wt-post-meta ">
+                                               <ul>
+                                                   <li class="post-date"><strong><%= relatedPost.get('createdAt').getDate() + " " + monthNames[relatedPost.get('createdAt').getMonth()];  %></strong> <span> <%= relatedPost.get('createdAt').getFullYear(); %></span> </li>
+                                                   <li class="post-author"><a href="javascript:void(0);">By <span>Admin</span></a> </li>
+                                               </ul>
+                                           </div>
+                                           <div class="wt-post-text">
+                                               <p><%= relatedPost.get('description') %></p>  
+                                           </div>
+                                           <a href="<%= '/projects/' + relatedPost.get('alias') %>" class="site-button black radius-no text-uppercase"><span class="font-12 letter-spacing-5"> Read More </span></a>
+                                       </div>
+                                   </div>
+                               </div>
+                            <% }); %>
                               
                           </div>
                       </div>
