@@ -1,4 +1,5 @@
 {
+    "no-restricted-globals": ["Parse"],
     "defaultSeverity": "error",
     "extends": [
       "tslint:recommended",
